@@ -26,3 +26,10 @@ jobs:
 - template: .azure-pipelines/playbooksValidations.yaml
 - template: .azure-pipelines/sampleDataValidator.yaml
 - template: .azure-pipelines/contentValidations.yaml
+
+#Publish artifacts
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
